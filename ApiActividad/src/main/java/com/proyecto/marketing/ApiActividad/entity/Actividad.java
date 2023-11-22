@@ -2,7 +2,10 @@
 package com.proyecto.marketing.ApiActividad.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import lombok.Data;
 
 @Data
@@ -10,9 +13,7 @@ import lombok.Data;
 public class Actividad {
     
     @Id
-    private Long id_actividad;
-    private String descripcion;
-    private String estado;
-    private String proyecto; 
-   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String descripcion;   
 }

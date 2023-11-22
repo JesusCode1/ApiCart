@@ -19,8 +19,8 @@ public class ActividadServiceImpl implements ActividadService{
     }
 
     @Override
-    public Actividad findById(Long id_actividad) {
-       return actividadrepository.findById(id_actividad).get();
+    public Actividad findById(Long id) {
+       return actividadrepository.findById(id).get();
     }
 
     @Override
@@ -30,17 +30,15 @@ public class ActividadServiceImpl implements ActividadService{
 
     @Override
     public Actividad update(Actividad actividad) {
-       var ActividadDB =  actividadrepository.findById(actividad.getId_actividad()).get();
+       var ActividadDB =  actividadrepository.findById(actividad.getId()).get();
       ActividadDB.setDescripcion(actividad.getDescripcion());
-      ActividadDB.setEstado(actividad.getEstado());
-      ActividadDB.setProyecto(actividad.getProyecto());
       return actividadrepository.save(ActividadDB);
 
     }
 
     @Override
-    public void delete(Long id_actividad) {
-         var actividadDB = actividadrepository.findById(id_actividad).get();
+    public void delete(Long id) {
+         var actividadDB = actividadrepository.findById(id).get();
          actividadrepository.delete(actividadDB);
     }
     

@@ -20,17 +20,17 @@ public class ActividadController {
     
     @Autowired
     private ActividadService actividadService;
-    //End Point
+    
     @GetMapping("/findAll")
     public List<Actividad> findAll(){
         return actividadService.findAll();
         
     }
     @GetMapping("/findById/{id}")
-    public Actividad findById(@PathVariable Long id_actividad){
-        return actividadService.findById(id_actividad);
+    public Actividad findById(@PathVariable Long id){
+        return actividadService.findById(id);
     }
-    @PostMapping("/findById/{id}")
+    @PostMapping("/add")
     public Actividad add(@RequestBody Actividad actividad){
         return actividadService.add(actividad);
     }
@@ -39,7 +39,8 @@ public class ActividadController {
         return actividadService.update(actividad);
     }
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id_actividad){
-        actividadService.delete(id_actividad);
+    public void delete(@PathVariable Long id){
+        actividadService.delete(id);
     }    
 }
+    
