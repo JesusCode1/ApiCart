@@ -13,4 +13,5 @@ public interface ActividadService {
      public Actividad add(Actividad actividad);
      public Actividad update(Actividad actividad);
      public void delete (Long id);
+     public Actividad findByTipo(String tipo);
 }

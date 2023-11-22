@@ -32,6 +32,7 @@ public class ActividadServiceImpl implements ActividadService{
     public Actividad update(Actividad actividad) {
        var ActividadDB =  actividadrepository.findById(actividad.getId()).get();
       ActividadDB.setDescripcion(actividad.getDescripcion());
+      ActividadDB.setTipo(actividad.getTipo());
       return actividadrepository.save(ActividadDB);
 
     }
@@ -40,6 +41,12 @@ public class ActividadServiceImpl implements ActividadService{
     public void delete(Long id) {
          var actividadDB = actividadrepository.findById(id).get();
          actividadrepository.delete(actividadDB);
+    }
+
+    @Override
+    public Actividad findByTipo(String tipo) {
+        
+        return actividadrepository.findByTipo(tipo);
     }
     
 }
