@@ -1,0 +1,47 @@
+
+package com.proyecto.marketing.ApiActividad.service;
+
+import com.proyecto.marketing.ApiActividad.dao.ActividadRepository;
+import com.proyecto.marketing.ApiActividad.entity.Actividad;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ActividadServiceImpl implements ActividadService{
+    
+    @Autowired
+    private ActividadRepository actividadrepository;
+    
+    @Override
+    public List<Actividad> findAll() {
+        return actividadrepository.findAll();
+    }
+
+    @Override
+    public Actividad findById(Long id_actividad) {
+       return actividadrepository.findById(id_actividad).get();
+    }
+
+    @Override
+    public Actividad add(Actividad actividad) {
+         return actividadrepository.save(actividad);
+    }
+
+    @Override
+    public Actividad update(Actividad actividad) {
+       var ActividadDB =  actividadrepository.findById(actividad.getId_actividad()).get();
+      ActividadDB.setDescripcion(actividad.getDescripcion());
+      ActividadDB.setEstado(actividad.getEstado());
+      ActividadDB.setProyecto(actividad.getProyecto());
+      return actividadrepository.save(ActividadDB);
+
+    }
+
+    @Override
+    public void delete(Long id_actividad) {
+         var actividadDB = actividadrepository.findById(id_actividad).get();
+         actividadrepository.delete(actividadDB);
+    }
+    
+}
